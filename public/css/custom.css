@@ -1,0 +1,210 @@
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-selection{
+    height: 34px !important;
+    line-height: 34px !important;
+    background-image: none !important;
+}
+
+.select2-selection--single, .select2-selection{
+    display: block;
+    height: 26px;
+    padding: 0 0 0 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #aaa;
+    white-space: nowrap;
+    line-height: 26px;
+    color: #444;
+    text-decoration: none;
+    border-radius: 4px;
+    background-clip: padding-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(0.5, white));
+    background-image: -webkit-linear-gradient(center bottom, #eeeeee 0%, white 50%);
+    background-image: -moz-linear-gradient(center bottom, #eeeeee 0%, white 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
+    background-image: linear-gradient(to top, #eeeeee 0%, #ffffff 50%);
+    border-radius:0 !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left:4px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height:34px !important;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+.effect {
+    -khtml-opacity: 0.6;
+    -moz-opacity: 0.6;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
+#img-load {
+    position: absolute;
+}
+
+.error-inner {
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    color: #fff;
+    max-width: 400px;
+    min-width: 170px;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.has-error .select2-container a {
+    border-color: #a94442;
+}
+
+.has-error .select2-container a:focus {
+    border-color: #843534;
+}
+
+.main-header {
+    margin-bottom: 20px !important;
+}
+
+.table td.centered {
+    text-align: center !important;
+}
+
+.no-margin {
+    margin: 0px !important;
+;
+}
+
+html {
+    overflow-x: hidden !important;
+}
+
+.select2-container--bootstrap .select2-results__group {
+    font-size: 13px;
+}
+
+.select2-container--bootstrap .select2-results__option .select2-results__option {
+    padding: 6px 24px;
+}
+
+.select2.select2-container.select2-container--bootstrap {
+    width: 100% !important;
+}
+
+
+.z-depth-0 {
+    box-shadow: none !important;
+}
+
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.z-depth-2 {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.z-depth-3 {
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.z-depth-4, .modal {
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+.z-depth-5 {
+    box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+.hoverable {
+    box-shadow: 0;
+    transition: box-shadow .25s;
+}
+
+.hoverable:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow .25s;
+}
+
+.select2-selection__choice {
+    background-color: #eee!important;
+    border: 1px solid #eee !important;
+    font-size: 15px
+}
+
+.select2-selection__choice .select2-selection__choice__remove {
+    font-weight: 400!important
+}
+
+.hyp-white-13, .hyp-white-13:visited, .hyp-white-13:focus, .hyp-white-13:active {
+    color: #ffffff !important;
+    font-size: 13px;
+    text-decoration:none;
+}
+
+.hyp-white-13:hover {
+    color: #ffffff;
+    font-size: 13px;
+    text-decoration:underline;
+}
+
+.input-full-width {
+    max-width: 100%;
+}
+
+.dropzone.small {
+    background: none !important;
+    border: none !important;
+    height: 100px;
+    min-height: 100px;
+}
+
+.dropzone.small .dz-message:before {
+    font-size: 1em;
+}
+
+.dropzone.small .dz-message {
+    margin-top: 0px !important;
+    top: 0px !important;
+}

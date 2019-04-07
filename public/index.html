@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blob file uploader sample - with API support</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Blob file uploader sample">
+    <meta name="author" content="madalinplastoi">
+
+    <!--3rd party CSS-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/king-admin.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--3rd party JavaScript-->
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/modernizr-2.6.2.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tour.custom.js"></script>
+    <script type="text/javascript" src="js/knockout-3.2.0.min.js"></script>
+    <script type="text/javascript" src="js/knockout-mapping.js"></script>
+    <script type="text/javascript" src="js/Q/Q.js"></script>
+    <script type="text/javascript" src="js/toastr/toastr.js"></script>
+    <script type="text/javascript" src="js/kingadmin/king-common.js"></script>
+
+    <!--Application related CSS-->
+    <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+
+    <!--Application related JavaScript-->
+    <script type="text/javascript" src="dist/js/ui-models.js"></script>
+    <script type="text/javascript" src="dist/js/ui-common.js"></script>
+    <script type="text/javascript" src="dist/js/ui-proxies.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header" id="action-bar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="font-size: 28px;" href="/"><i class="fa fa-dashboard"></i>Home</a>
+        </div>
+    </div>
+</div>
+<div class="container body-content" style="top: 80px;
+    position: relative;">
+    <div id="media-wrapper">
+        <div class="content">
+            <div class="main-header">
+                <h2><strong>Media upload in Azure Blob - sample</strong></h2>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="tab-pane" id="media" data-bind="stopBinding: true">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="media-items-wrapper" class="col-md-12">
+                                <div data-bind="foreach : _items, visible: _isDisabled() == false" style="display:none;"
+                                     class="col-md-12">
+                                    <div class="col-md-12" style="margin-bottom: 20px; ">
+                                        <div class="col-sm-1">
+                                            <img style="max-height:50px; max-width:50px; vertical-align:middle; margin-left:auto; margin-right:auto;"
+                                                 data-bind="attr: { src : m.ThumbnailUrl}"/>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div data-bind="text: m.Filename ">
+                                                GetMediaSasUrl
+                                            </div>
+                                            <div data-bind="text: m.Size">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 btn-group-sm">
+                                            <button type="button" class="btn btn-danger"
+                                                    data-bind="click: $parent.uiEvent_WhenUserTriggersRemoveMedia"><i
+                                                    class="fa fa-trash-o"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <form class="dropzone dz-clickable"
+                                          data-bind="css : { 'small' : _itemsCount() > 0 }, visible: _isDisabled() == false"
+                                          style="display:none;" id="upload-media-form" enctype="multipart/form-data">
+                                        <div class="dz-default dz-message" data-bind="visible: _itemsCount() == 0 ">
+                                            <span class="h3">Drop files here to upload</span>
+                                            <input type="file"
+                                                   style="height: 100%;position: absolute;top: 0px;width: 100%;cursor: pointer;"
+                                                   multiple="" size="1">
+                                        </div>
+                                        <div class="dz-default dz-message" data-bind="visible: _itemsCount() > 0 ">
+                                            <span class="h5">Drop files here to upload</span>
+                                            <input type="file"
+                                                   style="opacity: 0;height: 100%;position: absolute;top: 0px;width: 100%;cursor: pointer;"
+                                                   multiple="" size="1">
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-md-12" data-bind="visible: _isDisabled() == true" style="display:none;">
+                                    <div class="center-block centered text-center">
+                                        <span class="roboto-24-bold-black">The media component is disabled for current element until you save it.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="media-items-uploader-wrapper" class="col-md-12" style="margin-top:20px;">
+
+                                <div class="col-md-12" data-bind="foreach : _items">
+                                    <div class="col-md-10">
+                                        <div class="col-md-8" data-bind="text: m._submitObject.filename ">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="progress">
+                                                <div class="progress-bar"
+                                                     data-bind="attr: { 'id' : 'bar' + m._submitObject.progressId}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a style="cursor:pointer;" data-bind="click: function(data, event){ $parent.cancelUploadProcess($data.m.GuidId)}">
+                                            Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <footer>
+        <p>&copy; Madalin Plastoi</p>
+    </footer>
+</div>
+
+<script type="text/javascript" src="js/fileupload/load-image.js"></script>
+<script type="text/javascript" src="js/fileupload/canvas-to-blob.js"></script>
+<script type="text/javascript" src="js/fileupload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="js/fileupload/jquery.fileupload.js"></script>
+<script type="text/javascript" src="js/fileupload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" src="js/fileupload/jquery.fileupload-resize.js"></script>
+<script type="text/javascript" src="js/fileupload/iframe-transport.js"></script>
+<script type="text/javascript" src="dist/js/media-upload.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        var mediaWebc = new media.MediaWebc();
+        mediaWebc.activate([], null);
+
+        var mediaUploaderWebc = new media.UploadMediaWebc();
+        mediaUploaderWebc.activate();
+    });
+</script>
+
+</body>
+</html>
+<script type="text/javascript">
+    utils.Static.PrepareActivityLoader();
+    //utils.Static.InitCustomFormatValidationMethods();
+</script>

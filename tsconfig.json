@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "public/dist",
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "lib": [ "es2015", "dom" ],
+    "baseUrl": "./",
+    "typeRoots": ["customTypings, typings"]
+  },
+  "exclude": [
+    "node_modules",
+    "jspm_packages",
+    "public/dist",
+    "build",
+    "customTypings"
+  ],
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
